@@ -36,6 +36,7 @@ import $t from './libs/test.js';
 import _ from 'lodash';
 const source = $t.source(1);
 $t.answer(1, async () => {
+  // modification array object with reducer to have new object
   const targetData = source.reduce(
     (acc, obj) => {
       acc.income += obj.type === 'income' ? obj.amount : 0;
@@ -74,7 +75,9 @@ $t.answer(1, async () => {
 */
 const $source = $t.source(2);
 $t.answer(2, async () => {
+  // Get ids
   const ids = await $source.getIds();
+  // i send the id through the parameter and it returns a list of texts
   let arrayText = await Promise.all(
     ids.map(async (id) => await $source.getText(id))
   );
